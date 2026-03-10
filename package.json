@@ -1,0 +1,19 @@
+{
+  "name": "claude-faqs",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build:faq": "bun scripts/build-faq-index.ts",
+    "check:faq": "bun scripts/check-faq-content.ts",
+    "typecheck": "tsc --noEmit",
+    "dev": "bun run build:faq && wrangler dev",
+    "deploy": "bun run build:faq && wrangler deploy"
+  },
+  "devDependencies": {
+    "@types/node": "^24.3.0",
+    "@cloudflare/workers-types": "^4.20260301.0",
+    "typescript": "^5.8.2",
+    "wrangler": "^4.6.0"
+  }
+}

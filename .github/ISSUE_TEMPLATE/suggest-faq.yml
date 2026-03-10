@@ -1,0 +1,60 @@
+name: Suggest FAQ
+description: Suggest a new or missing FAQ entry
+title: "[FAQ] "
+labels:
+  - new-faq
+  - needs-review
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Use this form if you keep seeing the same question in Discord, Reddit, or support conversations.
+  - type: input
+    id: question
+    attributes:
+      label: Question
+      description: Write the question the way users actually ask it.
+      placeholder: Why was I charged so much so quickly?
+    validations:
+      required: true
+  - type: dropdown
+    id: category
+    attributes:
+      label: Best category
+      options:
+        - Account Issues
+        - Billing and Plans
+        - Claude Code Workflows
+        - Claude Code Operations
+        - Context, Caching, Streaming, and Batch
+        - Backend and Integrations
+        - Models, Safety, and Updates
+        - Support and Access
+        - Claude Usage
+        - General Questions
+    validations:
+      required: true
+  - type: textarea
+    id: why
+    attributes:
+      label: Why should this exist?
+      description: Tell us where you are seeing the question repeated.
+      placeholder: This comes up in Discord almost every week whenever someone gets locked out of their old school email.
+    validations:
+      required: true
+  - type: textarea
+    id: source
+    attributes:
+      label: Official Anthropic source
+      description: Paste any official Anthropic doc or support link that helps answer it.
+      placeholder: https://support.claude.com/...
+    validations:
+      required: false
+  - type: textarea
+    id: draft
+    attributes:
+      label: Suggested answer
+      description: Optional. Rough notes are fine.
+      placeholder: Support can help if the email on the account is no longer accessible...
+    validations:
+      required: false

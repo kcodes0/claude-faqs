@@ -1,0 +1,6 @@
+node_modules/
+.wrangler/
+dist/
+.DS_Store
+faq-index.json
+keygen.sh
