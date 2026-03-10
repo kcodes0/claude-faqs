@@ -1,11 +1,8 @@
 blank_issues_enabled: false
 contact_links:
-  - name: General Questions
-    url: https://example.com
-    about: For general questions about Claude or Anthropic, please join our Discord community
-  - name: Claude Bug Report
-    url: https://support.anthropic.com
-    about: For bugs with Claude itself, please contact Anthropic support directly
-  - name: Community Discussion
-    url: https://linktodiscordorreddit.com
-    about: For broader discussions, visit our Reddit community
+  - name: API Documentation
+    url: https://github.com/konacodes/claude-faqs/blob/main/docs/API.md
+    about: Read the API docs before opening an implementation question.
+  - name: Anthropic Support
+    url: https://support.claude.com
+    about: Use official Anthropic support for account, billing, or product-access issues.

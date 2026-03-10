@@ -1,59 +1,85 @@
-# Claude Community FAQs
+# Claude Community FAQ API
 
-Welcome to the community-driven FAQ resource for Claude's Developer Discord and Reddit communities (both r/Anthropic and r/ClaudeAI)! This wiki is designed to answer the most common questions about Claude, Anthropic's services, and everything in between.
+A community-maintained FAQ corpus for Claude, Claude Code, and Anthropic account issues, served through a Cloudflare Worker API so Discord bots, Reddit bots, dashboards, and internal tools can pull answers programmatically.
 
-## Our goal
+## What this repo contains
 
-This living document aims to provide clear, practical answers to real questions from our community. Whether you're dealing with account issues, wondering about Claude's capabilities, or having technical problems, you'll likely find your answer here. And if you don't? Open up an issue and we can do our best to answer it here. Or join our discord <insert links> community to get faster answers from amazing developers who would be happy to help!
+- `faq-content/`: the markdown source of truth for FAQ answers
+- `scripts/build-faq-index.ts`: converts markdown into `faq-index.json`
+- `src/`: the Cloudflare Worker API, parser, search logic, and types
+- `docs/API.md`: API reference with request and response examples
+- `WALL_OF_FAME.md`: contributor recognition
 
-## Categories
+## FAQ categories
 
-### [Account Issues](account-issues-faqs.md)
-- Account bans and suspensions
-- Login and access problems
-- Account recovery
-- Profile and settings issues
+- [Account Issues](faq-content/account-issues-faqs.md)
+- [Billing and Plans](faq-content/billing-faq.md)
+- [Claude Code Workflows](faq-content/claude-code-faq.md)
+- [Claude Code Operations](faq-content/claude-code-operations-faq.md)
+- [Context, Caching, Streaming, and Batch](faq-content/context-caching-streaming-and-batch-faq.md)
+- [Backend and Integrations](faq-content/backend-and-integrations-faq.md)
+- [Models, Safety, and Updates](faq-content/models-safety-and-updates-faq.md)
+- [Support and Access](faq-content/support-and-access-faq.md)
+- [Claude Usage](faq-content/claude-usage.md)
+- [General Questions](faq-content/general-faq.md)
 
-### [Claude Usage](claude-usage.md)
-- What Claude can and cannot do
-- Model comparisons (Claude vs ChatGPT, etc.)
-- Privacy and data safety
-- Best practices for conversations
+## Contributing a FAQ update
 
-### [Claude Code](claude-code-faq.md)
-- Getting started with Claude Code
-- Sub-agents and MCPs
-- Context management and memory
-- Troubleshooting and performance issues
+1. Fork the repo.
+2. Create a branch.
+3. Add or edit markdown files inside `faq-content/`.
+4. Run the local checks.
+5. Open a pull request.
 
-### [Billing & Plans](billing-faq.md)
-- Plan comparisons (Pro vs Max)
-- Usage limits and optimization
-- Payment and subscription management
-- Refunds and cancellations
+Contributor workflow:
 
-### [Technical Issues](technical-faq.md)
-- API questions and development
-- Integration problems
-- Performance and troubleshooting
-- Browser and client issues
+```bash
+bun install
+bun run check:faq
+bun run build:faq
+bun run typecheck
+```
 
-### [General Questions](general-faq.md)
-- About Anthropic and Claude
-- Safety and usage policies
-- Community and support
-- Feature requests
+Optional local API preview:
 
-## How to Use This Wiki
+```bash
+bun run dev
+```
 
-1. Browse by category and click on the relevant FAQ section above
-3. Check out multiple sections as some questions might appear in different categories
-4. Still stuck? Join our [Discord](<link to page>) or visit our [Reddit community](<link to page>)
+## FAQ file format
 
-## Contributing
+Each file is auto-discovered from `faq-content/`. You do not need to register new files anywhere.
 
-This wiki is community-driven! If you have suggestions for new questions, improvements to existing answers, or spot any errors, we welcome your contributions. See [CONTRIBUTIONS.md](CONTRIBUTIONS.md) for more information.
+Use this structure:
 
----
+```md
+# Category Name
 
-*This wiki is maintained by the Anthropic community team and volunteer contributors. We are not affiliated, employed, or associated in any official way with Anthropic, PBC*        
+## Subcategory Name
+
+### The question users actually ask
+
+Answered by: YourName
+Sources: https://docs.anthropic.com/... https://support.claude.com/...
+Last verified: auto
+Your answer here.
+```
+
+Notes:
+
+- `Answered by:` is optional.
+- `Sources:` is strongly recommended.
+- `Last verified:` is optional. If omitted or set to `auto`, the build script stamps the current date in Anthropic HQ timezone (`America/Los_Angeles`).
+- `general-faq.md` may use `## Question` headings directly.
+
+## Suggesting new FAQs without a PR
+
+If you are not changing code directly, open a GitHub issue with the suggested question, where you saw it come up, and any official Anthropic source that helps answer it.
+
+## API usage
+
+See [docs/API.md](docs/API.md) for endpoints, auth, response formats, and Discord bot examples.
+
+## Recognition
+
+Contributors and maintainers are recognized in [WALL_OF_FAME.md](WALL_OF_FAME.md).
