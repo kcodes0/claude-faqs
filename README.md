@@ -83,3 +83,6 @@ See [docs/API.md](docs/API.md) for endpoints, auth, response formats, and Discor
 ## Recognition
 
 Contributors and maintainers are recognized in [WALL_OF_FAME.md](WALL_OF_FAME.md).
+
+---
+*This project is an independent community effort is not affiliated with Anthropic or Claude in any way.*
